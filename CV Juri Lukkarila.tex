@@ -1,0 +1,314 @@
+\documentclass[8pt,a4paper,oneside]{article}
+
+\usepackage[top=1.4cm, bottom=1.6cm, left=1.2cm, right=1.2cm]{geometry}  % margins
+\usepackage[OT1]{fontenc}						% 8-bit font encoding 
+\usepackage[utf8]{inputenc}						% Unicode input encoding
+\usepackage[english]{babel}						% spelling
+\usepackage{graphicx}							% external graphics
+\usepackage{microtype}							% Microtype makes the text really neat
+\usepackage{xcolor}							% more colors
+\usepackage{units}								% nice fractions in text
+\usepackage[full]{textcomp}						% text symbol support
+\usepackage{pdfpages}							% insert pages from other pdf documents
+%\usepackage[onehalfspacing]{setspace}			% easy row spacing
+\usepackage[dmyyyy]{datetime}					% date formatting
+\usepackage{multirow}							% table multirow columns 
+\usepackage{multicol}							% multicolumn pages
+\usepackage[inline]{enumitem}			% extended list structures
+\usepackage{tabularx}							% table sizing options
+\usepackage{hyperref} 				% hyperlinks and urls
+\usepackage{fancyhdr}				% headers and footers
+\usepackage{tikz}						% tikz graphics
+\usepackage{verbatim}				% comment sections
+\usepackage[skins]{tcolorbox}		% colorboxes
+\usepackage{pgffor}					% for loops
+\usepackage{metalogo}		% latex logo adjustment
+
+% fonts
+%\usepackage{kpfonts}
+%\usepackage{palatino}
+\usepackage[sfdefault]{cabin}		% Sans Serif main font
+\usepackage{tgcursor}					% TeX Gyre Cursor typewriter font
+%\usepackage{inconsolata}			% Inconsolata typewriter font
+
+% Path of graphics files. By default root and figures directory are used
+\graphicspath{{./}{figures/}}
+
+% float settings
+\renewcommand{\floatpagefraction}{0.1}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+
+\setlength{\textfloatsep}{12pt plus 1pt minus 2pt}  % text and float separation, plus and minus allow for streching when necessary
+\setlength{\intextsep}{12pt plus 1pt minus 2pt} 	% for floats inserted with "h"
+\setlength{\abovecaptionskip}{10pt}
+\setlength{\belowcaptionskip}{0pt}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot[L]{\footnotesize CV}
+\fancyfoot[C]{\footnotesize Juri Akseli Lukkarila} % \sc
+\fancyfoot[R]{\footnotesize \today}
+%\fancyfoot[R]{\thepage}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% paragraph breaks
+\setlength{\parindent}{0pt} 				 	% paragraph indentation
+\setlength{\parskip}{6pt plus 1pt minus 2pt} 	% paragraph lineskip
+
+\renewcommand{\dateseparator}{.} 				% Finnish date format
+
+% adjust LaTex logo kerning
+\setlogokern{La}{-.18em}
+\setlogokern{aT}{-.075em}
+
+
+% hyperref settings and pdf metadata
+\hypersetup{pdfpagemode=UseNone,
+	colorlinks=true,urlcolor=refcolor,linkcolor=black,citecolor=black,
+	pdftitle={CV Juri Lukkarila},
+	pdfauthor={Juri Lukkarila},
+	pdfsubject={CV}}
+
+% picture with round frame
+\newcommand{\roundpic}[4][]{
+	\tikz\node [circle, minimum width = #2, path picture = {
+		\node [#1] at (path picture bounding box.center) {
+			\includegraphics[width=#3]{#4}};}] {};
+}
+
+% logo with text
+\newcommand*{\logopic}[1]{
+	\raisebox{-0.35\baselineskip}{ % negative raisebox lowers the logo
+		\includegraphics[
+		height=1.25\baselineskip, % logo size
+		width=1.25\baselineskip,
+		keepaspectratio,
+		]{#1}}
+}
+
+% create line below text
+\newcommand{\myrule}{\vspace{0.5mm} {\color{lightgray}{\hrule height 0.5pt width \textwidth depth 0pt}} \vspace{1mm}} 
+
+% title formatting
+\newcommand{\titledate}[2]{{\bfseries \color{textcolor} \large #1} \hfill \textbf{#2} \myrule}
+
+% workplace formatting
+\newcommand{\workplace}[1]{{\bfseries \fontsize{10.5}{10.5}\selectfont #1}}
+
+% section title formatting
+\newcommand{\sectitle}[1]{{\sc \bfseries \LARGE #1}}
+
+% repeat command
+\newcommand{\myrepeat}[2]{\foreach \n in {1,...,#2}{#1}}
+	
+\newcommand{\mycircle}[1]{\raisebox{-0.16\baselineskip}{\tikz\draw[#1,fill=#1] (0,0) circle (5pt);}}	
+
+\newcommand{\smallercircle}[1]{\raisebox{-0.10\baselineskip}{\tikz\draw[#1,fill=#1] (0,0) circle (4pt);}}	
+
+% colors
+\definecolor{headcolor}  {RGB}{ 32,  38, 255} % CV
+\definecolor{textcolor}  {RGB}{ 32,  77, 255} % title text
+\definecolor{refcolor}   {RGB}{ 32,  104, 255} % urls
+\definecolor{symbolcolor}{RGB}{ 32, 104, 255} % color of circles etc
+
+\definecolor{lightgray}  {RGB}{192, 192, 192}
+\definecolor{bordercolor}{RGB}{224, 224, 224} % box frame
+\definecolor{backcolor}  {RGB}{249, 249, 249} % box background
+\definecolor{titlecolor} {RGB}{224, 224, 224} % box title background
+
+\raggedbottom
+
+\renewcommand{\baselinestretch}{1.01}
+
+\setlength{\arrayrulewidth}{1pt} % linewidth for the vertical line separating the two text columns
+
+\setlength{\footskip}{22pt} % footer spacing
+
+\newcommand{\boxarc}{2.5mm}
+\newcommand{\boxtop}{1.5mm}
+\newcommand{\boxmargins}{1mm}
+
+\newcommand{\mysep}{\hspace{2.5mm}}
+
+
+\tcbset{colback=backcolor,colframe=bordercolor,colbacktitle=titlecolor,coltitle=black, segmentation style={textcolor}}
+
+\begin{document}
+	\setlength{\fboxsep}{0pt}
+	% TITLE TEXT
+	\begin{minipage}{0.72\textwidth}
+		% CV
+		\begin{minipage}{0.23\textwidth}
+			\vspace{-8mm}
+			{\fontsize{60}{60}\selectfont \textbf{{\color{headcolor}{C}} \hspace{-8mm} {\color{refcolor}{V}}}} \vspace{1mm}
+		\end{minipage}
+		% NAME
+		\begin{minipage}{0.77\textwidth}
+			\vspace{-8mm}
+			{\huge \textbf{Juri Akseli Lukkarila} \vspace{0.5mm}} \\
+			Born 14.5.1989, Finland \\
+			Malminkatu 24 A 3, 00100 Helsinki \vspace{1mm}
+		\end{minipage}
+		\vspace{0.5mm}
+		\rule{0.99\textwidth}{2pt} %\hspace{1mm}
+		%\footnotesize 
+		%\small
+		%\normalsize
+		\setlength{\columnsep}{0.5cm}
+		\setlength{\multicolsep}{0cm}
+		% CONTACT INFO WITH LOGOS
+		\begin{multicols}{3}
+			\begin{itemize}[label={},leftmargin=0.4cm,labelwidth=0cm, labelsep=0cm, itemsep=-0.5mm]
+				\item \logopic{call.pdf} \ +358 400 641 594
+				\item \logopic{github.pdf} \ \href{https://github.com/Esgrove}{Esgrove}
+				\item \logopic{mail.pdf} \ \href{mailto:esgrove@outlook.com}{esgrove@outlook.com}
+				\item \logopic{In-2C-128px-R.png} \ \href{https://www.linkedin.com/in/jlukkari/}{linkedin.com/in/jlukkari}
+				\item \logopic{web.pdf} \ \href{www.esgrove.fi}{esgrove.fi}
+				\item \logopic{twitter.pdf} \ \href{https://twitter.com/djesgrove}{djesgrove} 
+			\end{itemize}
+		\end{multicols}
+	\end{minipage}
+	% PHOTO
+	\begin{minipage}{0.28\textwidth}
+		\raggedleft
+		\vspace{-6mm}
+		\roundpic[xshift=-2.1cm,yshift=-0.2cm]{3.7cm}{4.6cm}{Photo Crop.png}
+	\end{minipage}
+		
+	\vspace{0.5mm} % space after head section
+	
+%\fbox{
+\begin{minipage}[t]{0.64\textwidth}
+	
+	%%%%%%%% EDUCATION %%%%%%%%
+	
+	\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Education},box align=top]
+	
+	\titledate{Master of Science (Technology)}{12/2017}
+	\workplace{Aalto University School of Electrical Engineering} \\
+	Major: \textit{Acoustics \& Audio Technology}, Master's Programme in Computer, Communication and Information Sciences (CCIS) \\
+	
+	\titledate{Bachelor of Science (Technology)}{02/2016}
+	\workplace{Aalto University School of Electrical Engineering} \\
+	Major: \textit{Electronics}, Minor: \textit{Computer Science} \\
+	
+	\titledate{Finnish Matriculation Examination}{05/2008}
+	\workplace{Oulu University Upper Secondary School}
+	\end{tcolorbox} \vspace{\baselineskip}
+	
+	%%%%%%%% EXPERIENCE %%%%%%%%
+	\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Experience},box align=bottom]
+		
+	{\bfseries \color{textcolor} \large Project Employee } \hfill \textbf{12/2017 --- 09/2018} \myrule
+	\workplace{Aalto University Department of Signal Processing and Acoustics} \\
+	Research and development work in the Aalto speech recognition research group:
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+		\small
+		\item Development of a server-based speech recognition application using the Kaldi open-source ASR toolkit deployed with Docker running on a RHEL 7 virtual server.
+		\item Advisor for a Master's Thesis on developing an augmented reality automatic speech recognition app on iOS by utilizing the Apple ARKit with an iPad Pro 10,5" tablet. \\
+	\end{itemize}
+	
+	{\bfseries \color{textcolor} \large Research Assistant} \hfill \textbf{12/2016 --- 10/2017} \myrule
+	\workplace{Aalto University Department of Signal Processing and Acoustics} \\
+	I did my Master’s Thesis at the Aalto speech recognition research group, working in an Academy of Finland project on developing a conversational assistance application for the hearing impaired by utilizing automatic speech recognition.
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+		\small
+		\item Developed a GUI desktop application for Finnish speech recognition running on Ubuntu using Python, GTK+, GStreamer and the Kaldi speech recognition toolkit.
+		\item Designed and conducted user testing to establish the validity of the proposed solution. \\
+	\end{itemize}
+	
+	{\bfseries \color{textcolor} \large DJ \& Radio Host } \hfill \textbf{04/2011 --- } \myrule
+	\workplace{Bassoradio} \\
+	I host a bi-weekly two hour radio show \textit{Ruff Cut} on Finland’s top urban and electronic music radio station \textit{Basso}. Our show has consistently been one of the top 10 most listened bi-weekly shows on Bassoradio for many years now. \\
+	
+	{\bfseries \color{textcolor} \large DJ \& Audio Engineer } \hfill \textbf{01/2010 --- } \myrule
+	\workplace{T:mi Juri Lukkarila} \\
+	Successful professional DJ with over 400 performances all around Finland. I also do audio recording, mixing and production as a freelancer. Past projects include radio commercials, voice-overs, theater productions and dance shows.
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+		\small
+		\item Has taught me excellent social, communication and organizational skills \\
+	\end{itemize}
+	
+	{\bfseries \color{textcolor} \large Salesperson } \hfill \textbf{02/2010 --- 01/2013} \myrule
+	\workplace{Stockmann Herkku Helsinki} \\
+	Night and weekend salesperson at the Stockmann flagship grocery store.
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+		\small
+		\item Customer service and inventory management in a fast-paced working environment.
+	\end{itemize}
+	\end{tcolorbox}
+	
+\end{minipage}%} 
+\hfill\vline\hfill
+%\fbox{
+\begin{minipage}[t]{0.32\textwidth}
+	
+\renewcommand{\sp}{\hspace{0mm}}
+	
+%%%%%%%% SKILLS %%%%%%%%
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Skills},box align=top]
+{\linespread{1.11}\selectfont
+Windows 			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \\
+MacOS   			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \\
+Linux {\footnotesize(Ubuntu, RHEL)}\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray} \\
+
+Office  			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \\
+MATLAB  			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \\
+RStudio  			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray} \mycircle{lightgray} \mycircle{lightgray} \\
+Visual Studio 		\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray} \mycircle{lightgray} \\
+Adobe Illustrator 	\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray} \\
+
+Python  			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor}  \\
+C++  				\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray}  \\
+C 					\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray} \mycircle{lightgray}  \\
+Max/MSP				\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray} \mycircle{lightgray} \mycircle{lightgray}  \\
+\LaTeX  			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor}  \par} \vspace{\baselineskip}
+
+Frameworks and tools I have used (in descending order of familiarity): \\
+%\small
+\textit{Qt5, OpenMP, Git, OpenGL, CUDA, JUCE,  Wwise, UE4, Unity, Docker}
+\end{tcolorbox} \vspace{\baselineskip}
+
+%%%%%%%% LANGUAGES %%%%%%%%
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Languages},box align=top]
+{\linespread{1.11}\selectfont
+\hfill {\small \textit{Written} \hspace{10.5mm} \textit{Spoken}} \hspace{2.6mm}  \hfill \\
+Finnish \hfill \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \mysep \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \\
+English \hfill \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \mysep  \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{lightgray} \\
+Swedish \hfill \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{lightgray} \smallercircle{lightgray} \smallercircle{lightgray} \mysep \smallercircle{symbolcolor} \smallercircle{lightgray} \smallercircle{lightgray} \smallercircle{lightgray} \smallercircle{lightgray} \\
+Spanish \hfill \smallercircle{symbolcolor} \smallercircle{lightgray} \smallercircle{lightgray} \smallercircle{lightgray} \smallercircle{lightgray} \mysep \smallercircle{symbolcolor} \smallercircle{lightgray} \smallercircle{lightgray} \smallercircle{lightgray} \smallercircle{lightgray} \par}
+\end{tcolorbox} \vspace{\baselineskip}
+
+%%%%%%%% INTERESTS %%%%%%%%
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Trust Positions},box align=top]
+	%\small
+	{\bfseries \color{textcolor} \large Chairman} \hfill \textbf{2014 --- 2015} \myrule
+	\textbf{AQ --- Aalto University Students of Acoustics} \\
+	
+	{\bfseries \color{textcolor} \large Board member} \hfill \textbf{2006  --- 2008} \myrule
+	\textbf{Northern Finland Street Dance Association ry}
+\end{tcolorbox} \vspace{\baselineskip}
+
+%%%%%%%% INTERESTS %%%%%%%%
+\renewcommand{\baselinestretch}{1.15} % makes logos a bit bigger since the font is smaller here
+\begin{tcolorbox}[top=1mm,bottom=2.3mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Interests},box align=bottom]
+\small
+\begin{multicols}{2}
+\begin{itemize}[label={},leftmargin=0cm,labelwidth=0cm, labelsep=0cm, itemsep=0.25mm]
+	\item \logopic{vinyl.pdf} \ Music
+	\item \logopic{book.pdf} \ Sci-Fi
+	\item \logopic{gym.pdf} \ Gym
+	\item \logopic{popcorn.pdf} \ Cinema
+	\item \logopic{gaming.pdf} \ PC gaming
+	\item \logopic{ski.pdf} \ Freeskiing
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+\end{minipage}
+
+
+\end{document}
