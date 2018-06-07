@@ -9,6 +9,8 @@
 \usepackage{xcolor}							% more colors
 \usepackage{units}								% nice fractions in text
 \usepackage[full]{textcomp}						% text symbol support
+\usepackage{pdfpages}							% insert pages from other pdf documents
+%\usepackage[onehalfspacing]{setspace}			% easy row spacing
 \usepackage[dmyyyy]{datetime}					% date formatting
 \usepackage{multirow}							% table multirow columns 
 \usepackage{multicol}							% multicolumn pages
@@ -92,10 +94,10 @@
 \newcommand{\myrule}{\vspace{0.5mm} {\color{lightgray}{\hrule height 0.5pt width \textwidth depth 0pt}} \vspace{1mm}} 
 
 % title formatting
-\newcommand{\titledate}[2]{{\bfseries \color{textcolor} \large #1} \hfill \textbf{#2} \myrule}
+\newcommand{\titledate}[2]{{\bfseries \color{textcolor}  \fontsize{12}{12}\selectfont #1} \hfill \textbf{#2} \myrule}
 
 % workplace formatting
-\newcommand{\workplace}[1]{{\bfseries \fontsize{10.5}{10.5}\selectfont #1}}
+\newcommand{\workplace}[1]{{\bfseries \fontsize{11}{11}\selectfont #1}}
 
 % section title formatting
 \newcommand{\sectitle}[1]{{\sc \bfseries \LARGE #1}}
@@ -154,7 +156,7 @@
 		\vspace{0.5mm}
 		\rule{0.99\textwidth}{2pt} %\hspace{1mm}
 		%\footnotesize 
-		%\small
+		\small
 		%\normalsize
 		\setlength{\columnsep}{0.5cm}
 		\setlength{\multicolsep}{0cm}
@@ -174,13 +176,13 @@
 	\begin{minipage}{0.28\textwidth}
 		\raggedleft
 		\vspace{-6mm}
-		\roundpic[xshift=-2.1cm,yshift=-0.2cm]{3.7cm}{4.6cm}{Photo Crop.png}
+		\roundpic[xshift=-2.1cm,yshift=-0.2cm]{3.6cm}{4.6cm}{Jook Joint.png}
 	\end{minipage}
 		
-	\vspace{0.5mm} % space after head section
+	\vspace{0.7mm} % space after head section
 	
 %\fbox{
-\begin{minipage}[t]{0.64\textwidth}
+\begin{minipage}[t]{0.638\textwidth}
 	
 	%%%%%%%% EDUCATION %%%%%%%%
 	
@@ -201,40 +203,41 @@
 	%%%%%%%% EXPERIENCE %%%%%%%%
 	\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Experience},box align=bottom]
 		
-	{\bfseries \color{textcolor} \large Project Employee } \hfill \textbf{12/2017 --- 09/2018} \myrule
+	\titledate{Project Employee}{12/2017 --- (09/2018)}
 	\workplace{Aalto University Department of Signal Processing and Acoustics} \\
 	Research and development work in the Aalto speech recognition research group:
-	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet},before=\itshape]
 		\small
-		\item Development of a server-based speech recognition application using the Kaldi open-source ASR toolkit deployed with Docker running on a RHEL 7 virtual server.
-		\item Advisor for a Master's Thesis on developing an augmented reality automatic speech recognition app on iOS by utilizing the Apple ARKit with an iPad Pro 10,5" tablet. \\
+		\item Building and administering a server-based real-time speech recognition system.
+		\item Visiting Researcher at the Department of Computer Science at the University of Sheffield, UK, during 4.6.-6.7.2018, focusing on audio beamforming and microphone arrays.
+		\item Advisor for a Master's Thesis on developing an augmented reality automatic speech recognition app on the iOS by utilizing the Apple ARKit with an iPad Pro 10,5" tablet. \\
 	\end{itemize}
 	
-	{\bfseries \color{textcolor} \large Research Assistant} \hfill \textbf{12/2016 --- 10/2017} \myrule
+	\titledate{Research Assistant}{12/2016 --- 10/2017}
 	\workplace{Aalto University Department of Signal Processing and Acoustics} \\
 	I did my Master’s Thesis at the Aalto speech recognition research group, working in an Academy of Finland project on developing a conversational assistance application for the hearing impaired by utilizing automatic speech recognition.
-	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet},before=\itshape]
 		\small
 		\item Developed a GUI desktop application for Finnish speech recognition running on Ubuntu using Python, GTK+, GStreamer and the Kaldi speech recognition toolkit.
 		\item Designed and conducted user testing to establish the validity of the proposed solution. \\
 	\end{itemize}
 	
-	{\bfseries \color{textcolor} \large DJ \& Radio Host } \hfill \textbf{04/2011 --- } \myrule
+	\titledate{DJ \& Radio Host}{04/2011 --- present}
 	\workplace{Bassoradio} \\
-	I host a bi-weekly two hour radio show \textit{Ruff Cut} on Finland’s top urban and electronic music radio station \textit{Basso}. Our show has consistently been one of the top 10 most listened bi-weekly shows on Bassoradio for many years now. \\
+	I host a two hour radio show \textit{Ruff Cut} on Finland’s top urban and electronic music radio station \textit{Basso} every other Thursday evening. \\
 	
-	{\bfseries \color{textcolor} \large DJ \& Audio Engineer } \hfill \textbf{01/2010 --- } \myrule
+	\titledate{DJ \& Audio Engineer}{01/2010 --- present}
 	\workplace{T:mi Juri Lukkarila} \\
 	Successful professional DJ with over 400 performances all around Finland. I also do audio recording, mixing and production as a freelancer. Past projects include radio commercials, voice-overs, theater productions and dance shows.
-	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet},before=\itshape]
 		\small
 		\item Has taught me excellent social, communication and organizational skills \\
 	\end{itemize}
 	
-	{\bfseries \color{textcolor} \large Salesperson } \hfill \textbf{02/2010 --- 01/2013} \myrule
+	\titledate{Salesperson }{02/2010 --- 01/2013}
 	\workplace{Stockmann Herkku Helsinki} \\
 	Night and weekend salesperson at the Stockmann flagship grocery store.
-	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet}]
+	\begin{itemize}[leftmargin=0.4cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet},before=\itshape]
 		\small
 		\item Customer service and inventory management in a fast-paced working environment.
 	\end{itemize}
@@ -243,13 +246,13 @@
 \end{minipage}%} 
 \hfill\vline\hfill
 %\fbox{
-\begin{minipage}[t]{0.32\textwidth}
+\begin{minipage}[t]{0.325\textwidth}
 	
 \renewcommand{\sp}{\hspace{0mm}}
 	
 %%%%%%%% SKILLS %%%%%%%%
 \begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Skills},box align=top]
-{\linespread{1.11}\selectfont
+{\linespread{1.12}\selectfont
 Windows 			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \\
 MacOS   			\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \\
 Linux {\footnotesize(Ubuntu, RHEL)}\hfill \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{symbolcolor} \mycircle{lightgray} \\
@@ -273,7 +276,7 @@ Frameworks and tools I have used (in descending order of familiarity): \\
 
 %%%%%%%% LANGUAGES %%%%%%%%
 \begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Languages},box align=top]
-{\linespread{1.11}\selectfont
+{\linespread{1.12}\selectfont
 \hfill {\small \textit{Written} \hspace{10.5mm} \textit{Spoken}} \hspace{2.6mm}  \hfill \\
 Finnish \hfill \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \mysep \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \\
 English \hfill \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \mysep  \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{symbolcolor} \smallercircle{lightgray} \\
@@ -283,17 +286,16 @@ Spanish \hfill \smallercircle{symbolcolor} \smallercircle{lightgray} \smallercir
 
 %%%%%%%% INTERESTS %%%%%%%%
 \begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Trust Positions},box align=top]
-	%\small
-	{\bfseries \color{textcolor} \large Chairman} \hfill \textbf{2014 --- 2015} \myrule
+	\titledate{Chairman}{2014 --- 2015}
 	\textbf{AQ --- Aalto University Students of Acoustics} \\
 	
-	{\bfseries \color{textcolor} \large Board member} \hfill \textbf{2006  --- 2008} \myrule
+	\titledate{Board member}{2006  --- 2008}
 	\textbf{Northern Finland Street Dance Association ry}
 \end{tcolorbox} \vspace{\baselineskip}
 
 %%%%%%%% INTERESTS %%%%%%%%
-\renewcommand{\baselinestretch}{1.15} % makes logos a bit bigger since the font is smaller here
-\begin{tcolorbox}[top=1mm,bottom=2.3mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Interests},box align=bottom]
+\renewcommand{\baselinestretch}{1.15} % make logos a bit bigger since the font is smaller here
+\begin{tcolorbox}[top=1mm,bottom=3mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Interests},box align=bottom]
 \small
 \begin{multicols}{2}
 \begin{itemize}[label={},leftmargin=0cm,labelwidth=0cm, labelsep=0cm, itemsep=0.25mm]
