@@ -34,8 +34,6 @@
 \usepackage[top=1.32cm, bottom=1.4cm, left=1.18cm, right=1.18cm]{geometry}
 
 % fonts
-%\usepackage{kpfonts}
-%\usepackage{palatino}
 \usepackage[sfdefault]{cabin}		% Sans Serif main font
 \usepackage{tgcursor}			% TeX Gyre Cursor typewriter font
 %\usepackage{inconsolata}		% Inconsolata typewriter font
@@ -125,6 +123,19 @@
 \definecolor{backcolor}  {RGB}{252, 252, 252} % box background
 \definecolor{titlecolor} {RGB}{224, 224, 224} % box title background
 
+% color fade
+\usetikzlibrary{fadings}
+\newcommand\fadingtext[3][]{%
+	\begin{tikzfadingfrompicture}[name=fading letter]
+		\node[text=transparent!0,inner xsep=0pt,outer xsep=0pt,#1] {#3};
+	\end{tikzfadingfrompicture}%
+	\begin{tikzpicture}[baseline=(textnode.base)]
+	\node[inner sep=0pt,outer sep=0pt,#1](textnode){\phantom{#3}}; 
+	\shade[path fading=fading letter,#2,fit fading=false]
+	(textnode.south west) rectangle (textnode.north east);% 
+	\end{tikzpicture}% 
+}
+
 % some extra vertical spacing
 \renewcommand{\baselinestretch}{1.01}
 
@@ -136,7 +147,7 @@
 \newcommand{\boxtop}{1.5mm}
 \newcommand{\boxmargins}{1mm}
 \newcommand{\mysep}{\hspace{2.5mm}}
-\newcommand{\boxskip}{\vspace{0.92\baselineskip}}
+\newcommand{\boxskip}{\vspace{0.9\baselineskip}}
 
 % tcolorbox settings
 \tcbset{colback=backcolor,colframe=bordercolor,colbacktitle=titlecolor,coltitle=black, segmentation style={textcolor}}
@@ -151,7 +162,7 @@
 	% CV
 	\begin{minipage}{0.23\textwidth}
 		\vspace{-8mm}
-		{\fontsize{60}{60}\selectfont \textbf{{\color{headcolor}{C}} \hspace{-8mm} {\color{refcolor}{V}}}} \vspace{1mm}
+		{\fontsize{60}{60}\selectfont \textbf{\fadingtext[scale=1]{left color=headcolor,middle color = refcolor, right color=refcolor}{CV}}} \vspace{1mm}
 	\end{minipage}
 	% NAME
 	\begin{minipage}{0.77\textwidth}
@@ -160,8 +171,8 @@
 		Born 14.5.1989, Finland \\
 		Malminkatu 24 A 3, 00100 Helsinki \vspace{1mm}
 	\end{minipage}
-	\vspace{0.5mm}
-	\rule{0.99\textwidth}{2pt} %\hspace{1mm}
+	\vspace{0.7mm}
+	\rule{0.99\textwidth}{1.5pt} %\hspace{1mm}
 	\small
 	\setlength{\columnsep}{0.5cm}
 	\setlength{\multicolsep}{0cm}
@@ -251,31 +262,33 @@
 \renewcommand{\sp}{\hspace{0mm}}
 	
 %%%%%%%% SKILLS %%%%%%%%
-\begin{tcolorbox}[top=1.5mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Skills},box align=top]
-	{\linespread{1.14}\selectfont
-	Windows 			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	MacOS   			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	Linux 				\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Skills},box align=top]
+	{\linespread{1.06}\selectfont
+	Windows 		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
+	MacOS   		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
+	Linux 			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
 
-	Office  			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	MATLAB  			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	RStudio  			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	Visual Studio 			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	Adobe Illustrator 		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
+	Office  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
+	MATLAB  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
+	RStudio  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \bigcircle{lightgray}   \\
+	Visual Studio 		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \\
+	Adobe Illustrator 	\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
+	Ableton Live		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
+	FL Studio		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
 
-	Python  			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	C++  				\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
-	C 				\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	Max/MSP				\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	\LaTeX  			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \par} \vspace{\baselineskip}
+	Python  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
+	C++  			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
+	C 			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \\
+	Max/MSP			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \bigcircle{lightgray}   \\
+	\LaTeX  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \par} \vspace{\baselineskip}
 
 	Frameworks and tools I have used (in descending order of familiarity): \\
 	\textit{Qt5, OpenMP, Git, OpenGL, CUDA, JUCE,  GTK+, Boost, Wwise, UE4, Unity, Docker}
 \end{tcolorbox} \boxskip
 
 %%%%%%%% LANGUAGES %%%%%%%%
-\begin{tcolorbox}[top=1.5mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Languages},box align=top]
-	{\linespread{1.14}\selectfont
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Languages},box align=top]
+	{\linespread{1.06}\selectfont
 	\hfill {\small \textit{Written} \hspace{10.5mm} \textit{Spoken}} \hspace{2.6mm}  \hfill \\
 	Finnish \hfill \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \mysep \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \\
 	English \hfill \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \mysep  \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{lightgray} \\
@@ -284,7 +297,7 @@
 \end{tcolorbox} \boxskip
 
 %%%%%%%% TRUST POSITIONS %%%%%%%%
-\begin{tcolorbox}[top=2mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Trust Positions},box align=top]
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Trust Positions},box align=top]
 	\titledate{Chairman}{2014 --- 2015}
 	\textbf{AQ --- Aalto University Students of Acoustics} \\
 	
@@ -294,7 +307,7 @@
 
 %%%%%%%% INTERESTS %%%%%%%%
 \renewcommand{\baselinestretch}{1.2} % make logos a bit bigger since the font is smaller here
-\begin{tcolorbox}[top=1.5mm,bottom=3mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Interests},box align=bottom]
+\begin{tcolorbox}[top=1mm,bottom=2.6mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Interests},box align=bottom]
 	\small
 	\begin{multicols}{2}
 		\begin{itemize}[label={},leftmargin=0cm,labelwidth=0cm, labelsep=0cm, itemsep=0.3mm]
