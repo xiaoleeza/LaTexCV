@@ -29,6 +29,7 @@
 \usepackage[skins]{tcolorbox}		% colorboxes
 \usepackage{pgffor}			% for loops
 \usepackage{metalogo}			% latex logo adjustment
+\usepackage{ragged2e}	% override ragged commands locally
 
 % page margins
 \usepackage[top=1.32cm, bottom=1.4cm, left=1.18cm, right=1.18cm]{geometry}
@@ -94,6 +95,7 @@
 \newcommand{\myrule}{\vspace{0.5mm} {\color{lightgray}{\hrule height 0.5pt width \textwidth depth 0pt}} \vspace{1mm}} 
 
 % title formatting
+%\newcommand{\titledate}[2]{{\bfseries \fontsize{11.5}{11.5}\selectfont \fadingtext{left color=headcolor, right color=textcolor}{#1}} \hfill \textbf{#2} \myrule} 
 \newcommand{\titledate}[2]{{\bfseries \color{textcolor}  \fontsize{11.5}{11.5}\selectfont #1} \hfill \textbf{#2} \myrule}
 
 % workplace formatting
@@ -162,7 +164,9 @@
 	% CV
 	\begin{minipage}{0.23\textwidth}
 		\vspace{-8mm}
-		{\fontsize{60}{60}\selectfont \textbf{\fadingtext[scale=1]{left color=headcolor,middle color = refcolor, right color=refcolor}{CV}}} \vspace{1mm}
+		% fading text not showing up in some web pdf readers :(
+		%{\fontsize{60}{60}\selectfont \textbf{\fadingtext[scale=1]{left color=headcolor,middle color = refcolor, right color=refcolor}{CV}}} \vspace{1mm}
+		{\fontsize{60}{60}\selectfont  \textbf{\color{headcolor}{C}\color{textcolor}{V}}} \vspace{1mm}
 	\end{minipage}
 	% NAME
 	\begin{minipage}{0.77\textwidth}
@@ -179,7 +183,7 @@
 	% CONTACT INFO WITH LOGOS
 	\begin{multicols}{3}
 		\begin{itemize}[label={},leftmargin=0.4cm,labelwidth=0cm, labelsep=0cm, itemsep=-0.5mm]
-			\item \logopic{call.pdf} \ +358 400 641 594
+			\item \logopic{call.pdf} \ \href{tel:+358400641594}{+358 400 641 594}
 			\item \logopic{github.pdf} \ \href{https://github.com/Esgrove}{Esgrove}
 			\item \logopic{mail.pdf} \ \href{mailto:esgrove@outlook.com}{esgrove@outlook.com}
 			\item \logopic{In-2C-128px-R.png} \ \href{https://www.linkedin.com/in/jlukkari/}{linkedin.com/in/jlukkari}
@@ -281,9 +285,10 @@
 	C 			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \\
 	Max/MSP			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \bigcircle{lightgray}   \\
 	\LaTeX  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \par} \vspace{\baselineskip}
-
-	Frameworks and tools I have used (in descending order of familiarity): \\
-	\textit{Qt5, OpenMP, Git, OpenGL, CUDA, JUCE,  GTK+, Boost, Wwise, UE4, Unity, Docker}
+	
+	Frameworks and tools I have used (in descending order of familiarity):  \vspace{0.1mm} \\
+	{\small
+	\textit{Qt5, OpenMP, Git, OpenGL, CUDA, JUCE,  SFML, GTK+, Wwise, Boost, UE4, Unity, Docker}}
 \end{tcolorbox} \boxskip
 
 %%%%%%%% LANGUAGES %%%%%%%%
