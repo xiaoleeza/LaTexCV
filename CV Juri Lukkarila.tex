@@ -1,43 +1,97 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%				%
-%  LaTex CV       		%
-%  Juri Lukkarila		%
-%  7.6.2018			%
-%				%
+%								%
+%  LaTex CV       				%
+%  Juri Lukkarila				%
+%  2018							%
+%								%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[8pt,a4paper,oneside]{article}
+\documentclass[9pt,a4paper,oneside]{article}
 
-% packages
+\usepackage[top=1.32cm, bottom=1.45cm, left=1.18cm, right=1.18cm]{geometry}
 \usepackage[OT1]{fontenc}		% 8-bit font encoding 
 \usepackage[utf8]{inputenc}		% Unicode input encoding
 \usepackage[english]{babel}		% spelling
 \usepackage{graphicx}			% external graphics
 \usepackage{microtype}			% Microtype makes the text really neat
-\usepackage{xcolor}			% more colors
-\usepackage{units}			% nice fractions in text
+\usepackage[dvipsnames]{xcolor}	% more colors
+\usepackage{units}				% nice fractions in text
 \usepackage[full]{textcomp}		% text symbol support
-\usepackage[dmyyyy]{datetime}		% date formatting
+\usepackage[dmyyyy]{datetime}	% date formatting
 \usepackage{multirow}			% table multirow columns 
 \usepackage{multicol}			% multicolumn pages
-\usepackage[inline]{enumitem}		% extended list structures
+\usepackage[inline]{enumitem}	% extended list structures
 \usepackage{tabularx}			% table sizing options
 \usepackage{hyperref} 			% hyperlinks and urls
 \usepackage{fancyhdr}			% headers and footers
-\usepackage{tikz}			% tikz graphics
+\usepackage{tikz}				% tikz graphics
 \usepackage{verbatim}			% comment sections
-\usepackage[skins]{tcolorbox}		% colorboxes
-\usepackage{pgffor}			% for loops
+\usepackage[skins]{tcolorbox}	% colorboxes
+\usepackage{pgffor}				% for loops
 \usepackage{metalogo}			% latex logo adjustment
-\usepackage{ragged2e}	% override ragged commands locally
+\usepackage{ragged2e}			% override ragged commands locally
+\usepackage{verbatim}			% comment sections
 
-% page margins
-\usepackage[top=1.32cm, bottom=1.4cm, left=1.18cm, right=1.18cm]{geometry}
+% Finnish date format
+\renewcommand{\dateseparator}{.} 	
 
 % fonts
-\usepackage[sfdefault]{cabin}		% Sans Serif main font
-\usepackage{tgcursor}			% TeX Gyre Cursor typewriter font
-%\usepackage{inconsolata}		% Inconsolata typewriter font
+\usepackage{fontspec} 			% requires XeLatex
+\setmainfont				[Ligatures=TeX]{Myriad Pro SemiCondensed}
+\newfontfamily\titlefont	[Ligatures=TeX]{Myriad Pro Black SemiExtended}
+\newfontfamily\namefont		[Ligatures=TeX]{Myriad Pro Black SemiCondensed}
+\newfontfamily\titledatefont[Ligatures=TeX]{Myriad Pro Bold SemiCondensed}
+\newfontfamily\workplacefont[Ligatures=TeX]{Myriad Pro Semibold SemiCondensed}
+\newfontfamily\listfont		[Ligatures=TeX]{Myriad Pro SemiCondensed Italic}
+\newfontfamily\emphfont		[Ligatures=TeX]{Myriad Pro SemiCondensed Italic}
+
+% create line below text
+\newcommand{\myrule}{\vspace{0.5mm} {\color{lightgray}{\hrule height 0.5pt width \textwidth depth 0pt}} \vspace{1mm}} 
+
+% title formatting
+%\newcommand{\titledate}[2]{{\bfseries \fontsize{11.5}{11.5}\selectfont \fadingtext{left color=headcolor, right color=textcolor}{#1}} \hfill \textbf{#2} \myrule} 
+\newcommand{\titledate}[2]{{\titledatefont {\fontsize{11}{11}\selectfont \color{textcolor} #1} \hfill {\fontsize{10}{10}\selectfont #2} \myrule}}
+
+% workplace formatting
+\newcommand{\workplace}[1]{{\workplacefont #1}}
+
+% section title formatting
+\newcommand{\sectitle}[1]{{\Large \namefont #1}}
+
+% emphasis font
+\newcommand{\myemph}[1]{{\color{black} \emphfont #1}}
+
+% repeat command
+\newcommand{\myrepeat}[2]{\foreach \n in {1,...,#2}{#1}}
+
+% draw colored circles
+\newcommand{  \bigcircle}[1]{\raisebox{-0.15\baselineskip}{\tikz\draw[#1,fill=#1] (0,0) circle (5.2pt);}}	
+\newcommand{\smallcircle}[1]{\raisebox{-0.10\baselineskip}{\tikz\draw[#1,fill=#1] (0,0) circle (4.2pt);}}	
+
+\newcommand{\bcFive}{\bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{circcolor}}
+\newcommand{\bcFour}{\bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{lightgray}}
+\newcommand{\bcThree}{\bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{lightgray} \bigcircle{lightgray}}
+\newcommand{\bcTwo}{\bigcircle{circcolor} \bigcircle{circcolor} \bigcircle{lightgray} \bigcircle{lightgray} \bigcircle{lightgray}}
+\newcommand{\bcOne}{\bigcircle{circcolor} \bigcircle{lightgray} \bigcircle{lightgray} \bigcircle{lightgray} \bigcircle{lightgray}}
+
+\newcommand{\scFive}{\smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{circcolor}}
+\newcommand{\scFour}{\smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{lightgray}}
+\newcommand{\scThree}{\smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{lightgray} \smallcircle{lightgray}}
+\newcommand{\scTwo}{\smallcircle{circcolor} \smallcircle{circcolor} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray}}
+\newcommand{\scOne}{\smallcircle{circcolor} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray}}
+
+% custom list
+\newlist{cvlist}{itemize}{1}
+\setlist[cvlist]{leftmargin=0.32cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\raisebox{-0.06\baselineskip}{\Large \textbullet}},labelsep = 1mm, before=\small, font=\normalfont}
+
+% colors
+\definecolor{headcolor}  {cmyk}{   1, 0.95, 0,    0} % CV
+\definecolor{textcolor}  {cmyk}{   1, 0.80, 0,    0} % title text
+\definecolor{refcolor}   {cmyk}{   1, 0.75, 0,    0} % urls
+\definecolor{circcolor}{cmyk}{   1, 0.80, 0,    0} % color of circles etc
+\definecolor{boxcolor}	 {cmyk}{0.03, 0.03, 0, 0.08} % box frame
+\definecolor{backcolor}  {cmyk}{   0,    0, 0, 0.00} % box background
+\definecolor{lightgray}  {cmyk}{0.05, 0.05, 0, 0.15} % circle secondary color
 
 % Path of graphics files. By default root and figures directory are used
 \graphicspath{{./}{figures/}}
@@ -50,18 +104,32 @@
 \fancyfoot[R]{ \footnotesize \today}
 
 \renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.8pt}
 
 \setlength{\footskip}{22pt}          	% footer spacing
 
 % paragraph breaks
 \setlength{\parindent}{0pt} 		% paragraph indentation
-\setlength{\parskip}{6pt plus 1pt minus 2pt} % paragraph lineskip
+\setlength{\parskip}{4pt plus 1pt minus 2pt} % paragraph lineskip
 
+% some extra vertical spacing
+\renewcommand{\baselinestretch}{1.01}
+
+% linewidth for vertical line separating the two main columns
+\setlength{\arrayrulewidth}{0.8pt} 
+
+% relax page height equalization
 \raggedbottom
 
-% Finnish date format
-\renewcommand{\dateseparator}{.} 				
+% Length variables
+\newcommand{\boxarc}{2.5mm}
+\newcommand{\boxtop}{1.5mm}
+\newcommand{\boxmargins}{1mm}
+\newcommand{\mysep}{\hspace{2.8mm}}
+\newcommand{\boxskip}{\vspace{0.9\baselineskip}}
+
+% tcolorbox settings
+\tcbset{colback=backcolor,colframe=boxcolor,colbacktitle=boxcolor,coltitle=black, segmentation style={textcolor}}			
 
 % adjust LaTex logo kerning
 \setlogokern{La}{-.18em}
@@ -91,40 +159,6 @@
 		]{#1}}
 }
 
-% create line below text
-\newcommand{\myrule}{\vspace{0.5mm} {\color{lightgray}{\hrule height 0.5pt width \textwidth depth 0pt}} \vspace{1mm}} 
-
-% title formatting
-%\newcommand{\titledate}[2]{{\bfseries \fontsize{11.5}{11.5}\selectfont \fadingtext{left color=headcolor, right color=textcolor}{#1}} \hfill \textbf{#2} \myrule} 
-\newcommand{\titledate}[2]{{\bfseries \color{textcolor}  \fontsize{11.5}{11.5}\selectfont #1} \hfill \textbf{#2} \myrule}
-
-% workplace formatting
-\newcommand{\workplace}[1]{{\bfseries \fontsize{10.5}{10.5}\selectfont #1}}
-
-% section title formatting
-\newcommand{\sectitle}[1]{{\sc \bfseries \LARGE #1}}
-
-% repeat command
-\newcommand{\myrepeat}[2]{\foreach \n in {1,...,#2}{#1}}
-
-% draw colored circles
-\newcommand{\bigcircle}[1]{\raisebox{-0.16\baselineskip}{\tikz\draw[#1,fill=#1] (0,0) circle (5pt);}}	
-\newcommand{\smallcircle}[1]{\raisebox{-0.10\baselineskip}{\tikz\draw[#1,fill=#1] (0,0) circle (4pt);}}	
-
-% custom list
-\newlist{cvlist}{itemize}{1}
-\setlist[cvlist]{leftmargin=0.32cm, itemsep=0.5mm,parsep=0pt,topsep=0.5mm,label={\large\textbullet},labelsep = 1mm, before=\itshape\small, font=\normalfont}
-
-% colors
-\definecolor{headcolor}  {RGB}{ 32,  40, 255} % CV
-\definecolor{textcolor}  {RGB}{ 32,  77, 255} % title text
-\definecolor{refcolor}   {RGB}{ 32, 104, 255} % urls
-\definecolor{symbolcolor}{RGB}{ 32, 104, 255} % color of circles etc
-\definecolor{lightgray}  {RGB}{192, 192, 192} % circle secondary color
-\definecolor{bordercolor}{RGB}{224, 224, 224} % box frame
-\definecolor{backcolor}  {RGB}{252, 252, 252} % box background
-\definecolor{titlecolor} {RGB}{224, 224, 224} % box title background
-
 % color fade
 \usetikzlibrary{fadings}
 \newcommand\fadingtext[3][]{%
@@ -138,22 +172,6 @@
 	\end{tikzpicture}% 
 }
 
-% some extra vertical spacing
-\renewcommand{\baselinestretch}{1.01}
-
-% linewidth for vertical line separating the two main columns
-\setlength{\arrayrulewidth}{1pt} 
-
-% Length variables
-\newcommand{\boxarc}{2.5mm}
-\newcommand{\boxtop}{1.5mm}
-\newcommand{\boxmargins}{1mm}
-\newcommand{\mysep}{\hspace{2.5mm}}
-\newcommand{\boxskip}{\vspace{0.9\baselineskip}}
-
-% tcolorbox settings
-\tcbset{colback=backcolor,colframe=bordercolor,colbacktitle=titlecolor,coltitle=black, segmentation style={textcolor}}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% DOCUMENT %%%%%%%%
 
@@ -162,27 +180,27 @@
 % TITLE TEXT
 \begin{minipage}{0.72\textwidth}
 	% CV
-	\begin{minipage}{0.23\textwidth}
+	\begin{minipage}{0.25\textwidth}
 		\vspace{-8mm}
 		% fading text not showing up in some web pdf readers :(
 		%{\fontsize{60}{60}\selectfont \textbf{\fadingtext[scale=1]{left color=headcolor,middle color = refcolor, right color=refcolor}{CV}}} \vspace{1mm}
-		{\fontsize{60}{60}\selectfont  \textbf{\color{headcolor}{C}\color{textcolor}{V}}} \vspace{1mm}
+		{\titlefont \fontsize{60}{60}\selectfont  \textbf{\color{headcolor}{C}\color{textcolor}{V}}} \vspace{1mm}
 	\end{minipage}
 	% NAME
-	\begin{minipage}{0.77\textwidth}
+	\begin{minipage}{0.75\textwidth}
 		\vspace{-8mm}
-		{\huge \textbf{Juri Akseli Lukkarila} \vspace{0.5mm}} \\
+		{\huge \namefont Juri Akseli Lukkarila \vspace{0.5mm}} \\
 		Born 14.5.1989, Finland \\
 		Malminkatu 24 A 3, 00100 Helsinki \vspace{1mm}
 	\end{minipage}
-	\vspace{0.7mm}
-	\rule{0.99\textwidth}{1.5pt} %\hspace{1mm}
+	\vspace{0.8mm}
+	\rule{0.99\textwidth}{1.2pt} %\hspace{1mm}
 	\small
 	\setlength{\columnsep}{0.5cm}
 	\setlength{\multicolsep}{0cm}
 	% CONTACT INFO WITH LOGOS
 	\begin{multicols}{3}
-		\begin{itemize}[label={},leftmargin=0.4cm,labelwidth=0cm, labelsep=0cm, itemsep=-0.5mm]
+		\begin{itemize}[label={},leftmargin=0.4cm,labelwidth=0cm, labelsep=0cm, itemsep=-0.25mm]
 			\item \logopic{call.pdf} \ \href{tel:+358400641594}{+358 400 641 594}
 			\item \logopic{github.pdf} \ \href{https://github.com/Esgrove}{Esgrove}
 			\item \logopic{mail.pdf} \ \href{mailto:esgrove@outlook.com}{esgrove@outlook.com}
@@ -196,64 +214,70 @@
 \begin{minipage}{0.28\textwidth}
 	\raggedleft
 	\vspace{-5mm}
-	\roundpic[xshift=-2.05cm,yshift=-0.1cm]{3.5cm}{4.3cm}{Jook Joint.png}
+	\roundpic[xshift=-3.70cm,yshift=-0.1cm]{3.5cm}{4.3cm}{Jook Joint.png}
 \end{minipage}
 	
-\vspace{0.5mm} % space after title section
+\vspace{2mm} % space after title section
 	
 \begin{minipage}[t]{0.638\textwidth}
 	
 	%%%%%%%% EDUCATION %%%%%%%%
 	
-	\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Education},box align=top]
+	\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{EDUCATION},box align=top]
 		\titledate{Master of Science (Technology)}{12/2017}
 		\workplace{Aalto University School of Electrical Engineering} \\
-		Major: \textit{Acoustics \& Audio Technology}, Master's Programme in Computer, Communication and Information Sciences (CCIS). GPA: 3,91 / 5 \\
+		Master's Programme in Computer, Communication and Information Sciences \\
+		\hspace*{0.25mm} {\Large \textbullet} Major: \myemph{Acoustics \& Audio Technology} \\
 		
 		\titledate{Bachelor of Science (Technology)}{02/2016}
 		\workplace{Aalto University School of Electrical Engineering} \\
-		 \hspace*{0.25mm} {\large \textbullet} Major:  \textit{Electronics} \hspace{3mm} {\large \textbullet} Minor:  \textit{Computer Science} \\
+		Degree Programme in Electronics and Electrical Engineering \\
+		 \hspace*{0.25mm} {\Large \textbullet} Major:  \myemph{Electronics} \hspace{3mm} {\Large \textbullet} Minor:  \myemph{Computer Science} \\
 		
 		\titledate{Finnish Matriculation Examination}{05/2008}
 		\workplace{Oulu University Upper Secondary School}
 	\end{tcolorbox} \boxskip
 	
 	%%%%%%%% EXPERIENCE %%%%%%%%
-	\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Experience},box align=bottom]
+	\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{EXPERIENCE},box align=bottom]
 		
-		\titledate{Project Employee}{12/2017 --- (09/2018)}
+		\titledate{Project Employee}{12/2017 -- 09/2018}
 		\workplace{Aalto University Department of Signal Processing and Acoustics} \\
 		Research and development work in the Aalto speech recognition research group:
 		\begin{cvlist}
+			\listfont
 			\item Building and administering a server-based, real-time speech recognition system running on a RHEL 7 virtual server, enabling speech audio input streaming from multiple sources.
 			\item Visiting Researcher at the Department of Computer Science at the University of Sheffield, UK, during 4.6.-6.7.2018, focusing on audio beamforming and microphone arrays for ASR.
 			\item Advisor for a Master's Thesis on developing an augmented reality automatic speech recognition application on iOS by utilizing the Apple ARKit together with our ASR server. \\
 		\end{cvlist}
 		
-		\titledate{Research Assistant}{12/2016 --- 10/2017}
+		\titledate{Research Assistant}{12/2016 -- 10/2017}
 		\workplace{Aalto University Department of Signal Processing and Acoustics} \\
 		I did my Master’s Thesis at the Aalto speech recognition research group, working in an Academy of Finland project on developing a conversational assistance application for the hearing impaired by utilizing automatic speech recognition.
 		\begin{cvlist}
+			\listfont
 			\item Developed a GUI desktop application for Finnish real-time speech recognition running on Ubuntu using Python, GTK+, GStreamer and the Kaldi automatic speech recognition toolkit.
 			\item Designed and conducted user testing to validate the developed software application. \\
 		\end{cvlist}
 		
-		\titledate{DJ \& Radio Host}{04/2011 --- present}
-		\workplace{Bassoradio} \\
-		I co-host a two hour radio show \textit{Ruff Cut} on Finland’s top urban and electronic music radio station \textit{Basso} every other Thursday evening. \\
+		\titledate{DJ \& Radio Host}{04/2011 -- present}
+		\workplace{Basso Media} \\
+		I co-host a two hour radio show \myemph{Ruff Cut} on Finland’s top urban and electronic music radio station \myemph{Bassoradio} every other Thursday evening. \\
 		
-		\titledate{DJ \& Audio Engineer}{01/2010 --- present}
+		\titledate{DJ \& Audio Engineer}{01/2010 -- present}
 		\workplace{T:mi Juri Lukkarila} \\
 		Djaying professionally with over 400 performances all around Finland. I also do audio recording, mixing and production as a freelancer. Past projects include radio commercials, voice-overs, theater productions and countless dance shows.
 		\begin{cvlist}
+			\listfont
 			\item Learned to be self-imposed and to take responsibility of my work and time management.
 			\item Has taught me excellent social, communication and organizational skills. \\
 		\end{cvlist}
 		
-		\titledate{Salesperson }{02/2010 --- 01/2013}
+		\titledate{Salesperson }{02/2010 -- 01/2013}
 		\workplace{Stockmann Herkku Helsinki} \\
 		Part-time salesperson at the Stockmann flagship grocery store.
 		\begin{cvlist}
+			\listfont
 			\item Customer service and inventory management in a fast-paced working environment.
 		\end{cvlist}
 	\end{tcolorbox}
@@ -266,60 +290,59 @@
 \renewcommand{\sp}{\hspace{0mm}}
 	
 %%%%%%%% SKILLS %%%%%%%%
-\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Skills},box align=top]
-	{\linespread{1.06}\selectfont
-	Windows 		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	MacOS   		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	Linux 			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{SKILLS},box align=top]
+	{\linespread{1.08}\selectfont
+	Windows 			\hfill \bcFive \\
+	MacOS   			\hfill \bcFive \\
+	Linux 				\hfill \bcFour \\
 
-	Office  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	MATLAB  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	RStudio  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	Visual Studio 		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	Adobe Illustrator 	\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
-	Ableton Live		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	FL Studio		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
+	Office  			\hfill \bcFive \\
+	MATLAB  			\hfill \bcFive \\
+	RStudio  			\hfill \bcTwo \\
+	Visual Studio 		\hfill \bcThree \\
+	Adobe Illustrator 	\hfill \bcFour \\
+	Ableton Live		\hfill \bcFive \\
+	FL Studio			\hfill \bcFour \\
 
-	Python  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \\
-	C++  			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \\
-	C 			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	Max/MSP			\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{lightgray}   \bigcircle{lightgray}   \bigcircle{lightgray}   \\
-	\LaTeX  		\hfill \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \bigcircle{symbolcolor} \par} \vspace{\baselineskip}
+	Python  			\hfill \bcFive \\
+	C++  				\hfill \bcFour \\
+	C 					\hfill \bcThree \\
+	Max/MSP				\hfill \bcTwo \\
+	\LaTeX  			\hfill \bcFive \par} \vspace{\baselineskip}
 	
-	Frameworks and tools I have used (in descending order of familiarity):  \vspace{0.1mm} \\
-	{\small
-	\textit{Qt5, OpenMP, Git, OpenGL, CUDA, JUCE,  SFML, GTK+, Wwise, Boost, UE4, Unity, Docker}}
+	Frameworks, libraries and tools I have used (in descending order of familiarity): \\
+	{\small \textit{Qt5, OpenMP, Git, OpenGL, CUDA, SFML, JUCE, GTK+, Wwise, Boost, UE4, Docker, Unity}}
 \end{tcolorbox} \boxskip
 
 %%%%%%%% LANGUAGES %%%%%%%%
-\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Languages},box align=top]
-	{\linespread{1.06}\selectfont
-	\hfill {\small \textit{Written} \hspace{10.5mm} \textit{Spoken}} \hspace{2.6mm}  \hfill \\
-	Finnish \hfill \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \mysep \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \\
-	English \hfill \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \mysep  \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{lightgray} \\
-	Swedish \hfill \smallcircle{symbolcolor} \smallcircle{symbolcolor} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \mysep \smallcircle{symbolcolor} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \\
-	Spanish \hfill \smallcircle{symbolcolor} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \mysep \smallcircle{symbolcolor} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \smallcircle{lightgray} \par}
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{LANGUAGES},box align=top]
+	{\linespread{1.08}\selectfont
+	\hfill {\small \textit{Written} \hspace{11.5mm} \textit{Spoken}} \hspace{3.5mm}  \hfill \\
+	Finnish \hfill \scFive \mysep \scFive \\
+	English \hfill \scFive \mysep \scFour \\
+	Swedish \hfill \scTwo  \mysep \scOne  \\
+	Spanish \hfill \scOne  \mysep \scOne  \par}
 \end{tcolorbox} \boxskip
 
 %%%%%%%% TRUST POSITIONS %%%%%%%%
-\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Trust Positions},box align=top]
-	\titledate{Chairman}{2014 --- 2015}
-	\textbf{AQ --- Aalto University Students of Acoustics} \\
+\begin{tcolorbox}[top=1mm,bottom=1mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{TRUST POSITIONS},box align=top]
+	\titledate{Chairman}{2014 -- 2015}
+	\workplace{AQ -- Aalto University Students of Acoustics} \\
 	
-	\titledate{Board member}{2006  --- 2008}
-	\textbf{Northern Finland Street Dance Association ry}
+	\titledate{Board member}{2006  -- 2008}
+	\workplace{Northern Finland Street Dance Association ry}
 \end{tcolorbox} \boxskip
 
 %%%%%%%% INTERESTS %%%%%%%%
-\renewcommand{\baselinestretch}{1.2} % make logos a bit bigger since the font is smaller here
-\begin{tcolorbox}[top=1mm,bottom=2.6mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{Interests},box align=bottom]
+\renewcommand{\baselinestretch}{1.25} % make logos a bit bigger since the font is smaller here
+\begin{tcolorbox}[top=1.25mm,bottom=2.5mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{INTERESTS},box align=bottom]
 	\small
 	\begin{multicols}{2}
-		\begin{itemize}[label={},leftmargin=0cm,labelwidth=0cm, labelsep=0cm, itemsep=0.3mm]
+		\begin{itemize}[label={},leftmargin=0cm,labelwidth=0cm, labelsep=0cm, itemsep=0.5mm]
 			\item \logopic{vinyl.pdf} 	\ Music
 			\item \logopic{book.pdf} 	\ Sci-Fi
 			\item \logopic{gym.pdf} 	\ Gym
-			\item \logopic{popcorn.pdf} 	\ Cinema
+			\item \logopic{popcorn.pdf} \ Cinema
 			\item \logopic{gaming.pdf} 	\ PC gaming
 			\item \logopic{ski.pdf} 	\ Freeskiing
 		\end{itemize}
