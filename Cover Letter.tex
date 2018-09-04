@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               %
+%  Cover Letter                 %
+%  Juri Lukkarila               %
+%  2018                         %
+%                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\usepackage[top=1.6cm, bottom=1.6cm, left=1.6cm, right=1.6cm]{geometry}
+\usepackage[OT1]{fontenc}               % 8-bit font encoding 
+\usepackage[utf8]{inputenc}             % Unicode input encoding
+\usepackage[english]{babel}             % spelling
+\usepackage{graphicx}                   % external graphics
+\usepackage{microtype}                  % microtype makes the text really neat
+\usepackage[dvipsnames]{xcolor}         % more colors
+\usepackage{units}                      % nice fractions in text
+\usepackage[full]{textcomp}             % text symbol support
+\usepackage[dmyyyy]{datetime}           % date formatting
+\usepackage{multirow}                   % table multirow columns 
+\usepackage{multicol}                   % multicolumn pages
+\usepackage[inline]{enumitem}           % extended list structures
+\usepackage{tabularx}                   % table sizing options
+\usepackage{hyperref}                   % hyperlinks and urls
+\usepackage{fancyhdr}                   % headers and footers
+\usepackage{tikz}                       % tikz graphics
+\usepackage{verbatim}                   % comment sections
+\usepackage{metalogo}                   % latex logo adjustment
+\usepackage{ragged2e}                   % override ragged commands locally
+\usepackage{verbatim}                   % comment sections
+\usepackage{blindtext}                  % dummy text
+
+% Finnish date format
+\renewcommand{\dateseparator}{.} 
+
+% fonts
+\usepackage{fontspec}                   % requires XeLatex
+\setmainfont                    [Ligatures=TeX]{Myriad Pro SemiCondensed}
+\newfontfamily\titlefont        [Ligatures=TeX]{Myriad Pro Black SemiExtended}
+\newfontfamily\namefont         [Ligatures=TeX]{Myriad Pro Black SemiCondensed}
+\newfontfamily\titledatefont    [Ligatures=TeX]{Myriad Pro Bold SemiCondensed}
+\newfontfamily\workplacefont    [Ligatures=TeX]{Myriad Pro Semibold SemiCondensed}
+\newfontfamily\footerfont       [Ligatures=TeX]{Myriad Pro Light SemiCondensed}
+
+% colors
+\definecolor{headcolor}  {cmyk}{   1, 0.95, 0,    0} % CV
+\definecolor{textcolor}  {cmyk}{   1, 0.80, 0,    0} % title text
+\definecolor{refcolor}   {cmyk}{   1, 0.75, 0,    0} % urls
+\definecolor{circcolor}  {cmyk}{   1, 0.70, 0,    0} % color of circles etc
+\definecolor{boxcolor}   {cmyk}{0.03, 0.03, 0, 0.08} % box frame
+\definecolor{backcolor}  {cmyk}{   0,    0, 0, 0.01} % box background
+\definecolor{lightgray}  {cmyk}{0.05, 0.05, 0, 0.15} % circle secondary color
+
+% Path of graphics files. By default root and figures directory are used
+\graphicspath{{./}{figures/}}
+
+% Footer
+\pagestyle{fancy}
+\fancyhead{}            % empty header
+\fancyfoot[L]{ \scriptsize \footerfont Cover letter}
+\fancyfoot[C]{ \scriptsize \footerfont Juri Akseli Lukkarila}
+\fancyfoot[R]{ \scriptsize \footerfont \today}
+
+\renewcommand{\headrulewidth}{0pt}              % header line width
+\renewcommand{\footrulewidth}{0.8pt}            % footer line width
+
+\setlength{\footskip}{22pt}                     % footer spacing
+
+% paragraph breaks
+\setlength{\parindent}{0pt}                     % paragraph indentation
+\setlength{\parskip}{12pt plus 2pt minus 2pt}   % paragraph lineskip
+
+% linespacing
+\linespread{1.15}
+
+% relax page height equalization
+%\raggedbottom
+
+% Length variables
+\newcommand{\boxarc}{2.25mm}
+\newcommand{\boxtop}{1.5mm}
+\newcommand{\boxmargins}{1mm}
+\newcommand{\mysep}{\hspace{2.8mm}}
+\newcommand{\boxskip}{\vspace{0.9\baselineskip}}                
+
+% adjust LaTex logo kerning
+\setlogokern{La}{-.18em}
+\setlogokern{aT}{-.075em}
+
+% hyperref settings and pdf metadata
+\hypersetup{pdfpagemode=UseNone,
+        colorlinks=true,urlcolor=refcolor,linkcolor=black,citecolor=black,
+        pdftitle={Cover Letter Juri Lukkarila},
+        pdfauthor={Juri Lukkarila},
+        pdfsubject={Cover Letter}
+}
+
+% logo with text
+\newcommand*{\logopic}[1]{
+        \raisebox{-0.34\baselineskip}{ % negative raisebox lowers the logo
+                \includegraphics[
+                height=1.25\baselineskip, % logo size
+                width=1.25\baselineskip,
+                keepaspectratio,
+                ]{#1}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{minipage}{\textwidth}
+        \raggedright
+        \centering
+        {\Huge \namefont \color{headcolor}{Cover} \color{textcolor}{Letter}} \hfill 
+        {\huge \namefont Juri Akseli Lukkarila}
+        \vspace{0.6mm}
+        \rule[0.6mm]{\textwidth}{2pt}
+        \fontsize{9pt}{9pt}\selectfont
+        \hspace*{1mm}
+        \logopic{call.pdf} \ \href{tel:+358400641594}{+358 400 641 594} \hfill
+        \logopic{mail.pdf} \ \href{mailto:esgrove@outlook.com}{esgrove@outlook.com} \hfill
+        \logopic{web.pdf}  \ \href{www.esgrove.fi}{esgrove.fi} \hfill
+        \logopic{github.pdf} \ \href{https://github.com/Esgrove}{Esgrove} \hfill
+        \logopic{In-2C-128px-R.png} \ \href{https://www.linkedin.com/in/jlukkari/}{linkedin.com/in/jlukkari} \hfill
+        \logopic{twitter.pdf} \ \href{https://twitter.com/djesgrove}{djesgrove}
+        \hspace*{1mm}
+\end{minipage}
+
+\vspace{0.7cm}
+
+\begin{center}
+{\titledatefont \LARGE Position \ / \  Company} \\
+\end{center}
+
+\Blindtext
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EOF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
