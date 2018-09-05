@@ -9,34 +9,34 @@
 \documentclass[9pt,a4paper,oneside]{article}
 
 \usepackage[top=1.32cm, bottom=1.45cm, left=1.18cm, right=1.18cm]{geometry}
-\usepackage[OT1]{fontenc}           % 8-bit font encoding 
-\usepackage[utf8]{inputenc}         % Unicode input encoding
-\usepackage[english]{babel}         % spelling
-\usepackage{graphicx}               % external graphics
-\usepackage{microtype}              % Microtype makes the text really neat
-\usepackage[dvipsnames]{xcolor}     % more colors
-\usepackage{units}                  % nice fractions in text
-\usepackage[full]{textcomp}         % text symbol support
-\usepackage[dmyyyy]{datetime}       % date formatting
-\usepackage{multirow}               % table multirow columns 
-\usepackage{multicol}               % multicolumn pages
-\usepackage[inline]{enumitem}       % extended list structures
-\usepackage{tabularx}               % table sizing options
-\usepackage{hyperref}               % hyperlinks and urls
-\usepackage{fancyhdr}               % headers and footers
-\usepackage{tikz}                   % tikz graphics
-\usepackage{verbatim}               % comment sections
-\usepackage[skins]{tcolorbox}       % colorboxes
-\usepackage{pgffor}                 % for loops
-\usepackage{metalogo}               % latex logo adjustment
-\usepackage{ragged2e}               % override ragged commands locally
-\usepackage{verbatim}               % comment sections
+\usepackage[OT1]{fontenc}               % 8-bit font encoding 
+\usepackage[utf8]{inputenc}             % Unicode input encoding
+\usepackage[english]{babel}             % spelling
+\usepackage{graphicx}                   % external graphics
+\usepackage{microtype}                  % Microtype makes the text really neat
+\usepackage[dvipsnames]{xcolor}         % more colors
+\usepackage{units}                      % nice fractions in text
+\usepackage[full]{textcomp}             % text symbol support
+\usepackage[dmyyyy]{datetime}           % date formatting
+\usepackage{multirow}                   % table multirow columns 
+\usepackage{multicol}                   % multicolumn pages
+\usepackage[inline]{enumitem}           % extended list structures
+\usepackage{tabularx}                   % table sizing options
+\usepackage{hyperref}                   % hyperlinks and urls
+\usepackage{fancyhdr}                   % headers and footers
+\usepackage{tikz}                       % tikz graphics
+\usepackage{verbatim}                   % comment sections
+\usepackage[skins]{tcolorbox}           % colorboxes
+\usepackage{pgffor}                     % for loops
+\usepackage{metalogo}                   % latex logo adjustment
+\usepackage{ragged2e}                   % override ragged commands locally
+\usepackage{verbatim}                   % comment sections
 
 % Finnish date format
 \renewcommand{\dateseparator}{.}    
 
 % fonts
-\usepackage{fontspec}               % requires XeLatex
+\usepackage{fontspec}                   % requires XeLatex
 \setmainfont                    [Ligatures=TeX]{Myriad Pro SemiCondensed}
 \newfontfamily\titlefont        [Ligatures=TeX]{Myriad Pro Black SemiExtended}
 \newfontfamily\namefont         [Ligatures=TeX]{Myriad Pro Black SemiCondensed}
@@ -147,10 +147,10 @@
 
 % logo with text
 \newcommand*{\logopic}[1]{
-    \raisebox{-0.35\baselineskip}{ % negative raisebox lowers the logo
+    \raisebox{-0.4\baselineskip}{ % negative raisebox lowers the logo
         \includegraphics[
-        height=1.25\baselineskip, % logo size
-        width=1.25\baselineskip,
+        height=1.26\baselineskip, % logo size
+        width=1.26\baselineskip,
         keepaspectratio,
         ]{#1}}
 }
@@ -196,13 +196,13 @@
     \setlength{\multicolsep}{0cm}
     % CONTACT INFO WITH LOGOS
     \begin{multicols}{3}
-        \begin{itemize}[label={},leftmargin=0.4cm,labelwidth=0cm, labelsep=0cm, itemsep=-0.25mm]
-            \item \logopic{call.pdf} \ \href{tel:+358400641594}{+358 400 641 594}
-            \item \logopic{github.pdf} \ \href{https://github.com/Esgrove}{Esgrove}
-            \item \logopic{mail.pdf} \ \href{mailto:esgrove@outlook.com}{esgrove@outlook.com}
-            \item \logopic{In-2C-128px-R.png} \ \href{https://www.linkedin.com/in/jlukkari/}{linkedin.com/in/jlukkari}
-            \item \logopic{web.pdf} \ \href{www.esgrove.fi}{esgrove.fi}
-            \item \logopic{twitter.pdf} \ \href{https://twitter.com/djesgrove}{djesgrove} 
+        \begin{itemize}[label={},leftmargin=0.4cm,labelwidth=0cm, labelsep=0cm, itemsep=0.2mm]
+            \item \logopic{call.pdf} \thinspace \href{tel:+358400641594}{+358 400 641 594}
+            \item \logopic{github.pdf} \thinspace \href{https://github.com/Esgrove}{Esgrove}
+            \item \logopic{mail.pdf} \thinspace \thinspace \href{mailto:juri.lukkarila@outlook.com}{juri.lukkarila@outlook.com}
+            \item \logopic{linkedin.pdf} \thinspace \href{https://www.linkedin.com/in/jlukkari/}{linkedin.com/in/jlukkari}
+            \item \logopic{web.pdf} \thinspace \href{http://www.esgrove.fi}{esgrove.fi}
+            \item \logopic{twitter.pdf} \thinspace \href{https://twitter.com/djesgrove}{djesgrove} 
         \end{itemize}
     \end{multicols}
 \end{minipage}
@@ -303,7 +303,7 @@
     \LaTeX              \hfill \bcFive \par} \vspace{\baselineskip}
     
     Frameworks, libraries and tools I have used (in descending order of familiarity): \\
-    {\small \textit{Qt5, OpenMP, Git, OpenGL, CUDA, SFML, GTK+, NumPy, JUCE, Wwise, Boost, UE4, Docker, Unity}}
+    {\small \textit{Qt5, OpenMP, Git, OpenGL, CUDA, SFML, GTK+, NumPy, JUCE, Wwise, Boost, UE4, Unity, Docker}}
 \end{tcolorbox} \boxskip
 
 %%%%%%%% LANGUAGES %%%%%%%%
@@ -327,7 +327,7 @@
 
 %%%%%%%% INTERESTS %%%%%%%%
 \renewcommand{\baselinestretch}{1.25} % make logos a bit bigger since the font is smaller here
-\begin{tcolorbox}[top=1.25mm,bottom=2.5mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{INTERESTS},box align=bottom]
+\begin{tcolorbox}[top=1.25mm,bottom=2.4mm,right=1mm,left=1mm,arc=\boxarc,toptitle=\boxtop,bottomtitle=1mm,title=\sectitle{INTERESTS},box align=bottom]
     \small
     \begin{multicols}{2}
         \begin{itemize}[label={},leftmargin=0cm,labelwidth=0cm, labelsep=0cm, itemsep=0.5mm]
